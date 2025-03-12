@@ -21,6 +21,6 @@ group :development do
 end
 
 group :test do
-  gem "rspec", "3.4.0"
+  gem "rspec", "3.13.0"
   gem "simplecov", "0.21.2", require: false
 end
