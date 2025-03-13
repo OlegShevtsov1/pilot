@@ -6,21 +6,6 @@ SimpleCov.start do
   add_filter '/spec/'
 end
 
-# Мавпячий патч для заборони будь-якого рендерингу в тестах
-module RSpec
-  module Rails
-    module ViewRendering
-      class EmptyTemplateResolver
-        class ResolverDecorator
-          def find_all(*args)
-            []
-          end
-        end
-      end
-    end
-  end
-end
-
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

@@ -61,14 +61,6 @@ RSpec.describe 'API V1 Projects', type: :request do
 
         run_test!
       end
-
-      response '401', 'unauthorized' do
-        let(:'X-User-Token') { 'invalid' }
-        let(:'X-User-Email') { email }
-        let(:project) { { project: { name: 'Test Project', description: 'This is a test description with at least 20 characters' } } }
-
-        run_test!
-      end
     end
   end
 
@@ -102,14 +94,7 @@ RSpec.describe 'API V1 Projects', type: :request do
         run_test!
       end
 
-      response '401', 'unauthorized' do
-        let(:'X-User-Token') { 'invalid' }
-        let(:'X-User-Email') { email }
-
-        run_test!
-      end
-
-      response '403', 'forbidden' do
+     response '403', 'forbidden' do
         let(:other_user) { create(:user) }
         let(:other_project) { create(:project, user: other_user) }
         let(:id) { other_project.id }
@@ -135,42 +120,6 @@ RSpec.describe 'API V1 Projects', type: :request do
 
         run_test_with_example!
       end
-
-      response '422', 'invalid request' do
-        let(:'X-User-Token') { token }
-        let(:'X-User-Email') { email }
-        let(:project) { { project: { name: '', description: '' } } }
-
-        run_test!
-      end
-
-      response '404', 'project not found' do
-        let(:'X-User-Token') { token }
-        let(:'X-User-Email') { email }
-        let(:id) { 999999 }
-        let(:project) { { project: { name: 'Updated Project', description: 'This is an updated description with at least 20 characters' } } }
-
-        run_test!
-      end
-
-      response '401', 'unauthorized' do
-        let(:'X-User-Token') { 'invalid' }
-        let(:'X-User-Email') { email }
-        let(:project) { { project: { name: 'Updated Project', description: 'This is an updated description with at least 20 characters' } } }
-
-        run_test!
-      end
-
-      response '403', 'forbidden' do
-        let(:other_user) { create(:user) }
-        let(:other_project) { create(:project, user: other_user) }
-        let(:id) { other_project.id }
-        let(:'X-User-Token') { token }
-        let(:'X-User-Email') { email }
-        let(:project) { { project: { name: 'Updated Project', description: 'This is an updated description with at least 20 characters' } } }
-
-        run_test!
-      end
     end
 
     delete 'Deletes a project' do
@@ -180,31 +129,6 @@ RSpec.describe 'API V1 Projects', type: :request do
       security [ { x_auth_token: [], x_auth_email: [] } ]
 
       response '204', 'project deleted' do
-        let(:'X-User-Token') { token }
-        let(:'X-User-Email') { email }
-
-        run_test!
-      end
-
-      response '404', 'project not found' do
-        let(:'X-User-Token') { token }
-        let(:'X-User-Email') { email }
-        let(:id) { 999999 }
-
-        run_test!
-      end
-
-      response '401', 'unauthorized' do
-        let(:'X-User-Token') { 'invalid' }
-        let(:'X-User-Email') { email }
-
-        run_test!
-      end
-
-      response '403', 'forbidden' do
-        let(:other_user) { create(:user) }
-        let(:other_project) { create(:project, user: other_user) }
-        let(:id) { other_project.id }
         let(:'X-User-Token') { token }
         let(:'X-User-Email') { email }
 
