@@ -6,7 +6,6 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 
 require 'rspec/rails'
 
-# Load all support files
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
 begin
@@ -24,8 +23,6 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
   config.include FactoryBot::Syntax::Methods
-
-  # Додаємо Devise тестові хелпери для контролерів
   config.include Devise::Test::ControllerHelpers, type: :controller
 end
 

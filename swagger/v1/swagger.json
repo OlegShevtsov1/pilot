@@ -58,31 +58,31 @@
                 "example": {
                   "data": [
                     {
-                      "id": 765,
+                      "id": 1391,
                       "name": "Sample Project",
                       "description": "This is a sample project description that meets the minimum length requirement",
                       "user": {
-                        "id": 1587,
+                        "id": 2733,
                         "email": "test1@example.com"
                       },
                       "tasks": []
                     },
                     {
-                      "id": 766,
+                      "id": 1392,
                       "name": "Sample Project",
                       "description": "This is a sample project description that meets the minimum length requirement",
                       "user": {
-                        "id": 1587,
+                        "id": 2733,
                         "email": "test1@example.com"
                       },
                       "tasks": []
                     },
                     {
-                      "id": 767,
+                      "id": 1393,
                       "name": "Sample Project",
                       "description": "This is a sample project description that meets the minimum length requirement",
                       "user": {
-                        "id": 1587,
+                        "id": 2733,
                         "email": "test1@example.com"
                       },
                       "tasks": []
@@ -174,11 +174,11 @@
               "application/json": {
                 "example": {
                   "data": {
-                    "id": 768,
+                    "id": 1394,
                     "name": "Test Project",
                     "description": "This is a test description with at least 20 characters",
                     "user": {
-                      "id": 1589,
+                      "id": 2735,
                       "email": "test3@example.com"
                     },
                     "tasks": []
@@ -227,9 +227,6 @@
           },
           "422": {
             "description": "invalid request"
-          },
-          "401": {
-            "description": "unauthorized"
           }
         },
         "requestBody": {
@@ -308,12 +305,12 @@
               "application/json": {
                 "example": {
                   "data": {
-                    "id": 769,
+                    "id": 1395,
                     "name": "Sample Project",
                     "description": "This is a sample project description that meets the minimum length requirement",
                     "user": {
-                      "id": 1592,
-                      "email": "test6@example.com"
+                      "id": 2737,
+                      "email": "test5@example.com"
                     },
                     "tasks": []
                   }
@@ -361,9 +358,6 @@
           },
           "404": {
             "description": "project not found"
-          },
-          "401": {
-            "description": "unauthorized"
           },
           "403": {
             "description": "forbidden"
@@ -389,12 +383,12 @@
               "application/json": {
                 "example": {
                   "data": {
-                    "id": 772,
+                    "id": 1397,
                     "name": "Updated Project",
                     "description": "This is an updated description with at least 20 characters",
                     "user": {
-                      "id": 1597,
-                      "email": "test11@example.com"
+                      "id": 2741,
+                      "email": "test9@example.com"
                     },
                     "tasks": []
                   }
@@ -439,18 +433,6 @@
                 }
               }
             }
-          },
-          "422": {
-            "description": "invalid request"
-          },
-          "404": {
-            "description": "project not found"
-          },
-          "401": {
-            "description": "unauthorized"
-          },
-          "403": {
-            "description": "forbidden"
           }
         },
         "requestBody": {
@@ -497,15 +479,6 @@
         "responses": {
           "204": {
             "description": "project deleted"
-          },
-          "404": {
-            "description": "project not found"
-          },
-          "401": {
-            "description": "unauthorized"
-          },
-          "403": {
-            "description": "forbidden"
           }
         }
       }
@@ -574,9 +547,9 @@
                   "status": "success",
                   "message": "User created successfully",
                   "data": {
-                    "user_id": 1610,
-                    "email": "new_user1741904545@example.com",
-                    "authentication_token": "gyvS1i_yWojjzHDz51DL"
+                    "user_id": 2745,
+                    "email": "new_user1741909190@example.com",
+                    "authentication_token": "_1WxKWA7-ZbnMUZnepon"
                   }
                 },
                 "schema": {
@@ -682,8 +655,8 @@
                   "status": "success",
                   "message": "User profile",
                   "data": {
-                    "user_id": 1611,
-                    "email": "test24@example.com"
+                    "user_id": 2746,
+                    "email": "test13@example.com"
                   }
                 }
               }
