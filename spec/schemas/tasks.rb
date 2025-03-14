@@ -7,10 +7,9 @@ module Schemas
         name: { type: :string },
         description: { type: :string },
         status: { type: :string, enum: %w[not_started in_progress completed] },
-        project_id: { type: :integer },
-        project_link: { type: :string }
+        project_id: { type: :integer }
       },
-      required: %w[id name description status project_link]
+      required: %w[id name description status]
     }.freeze
 
     TASK_REQUEST_SCHEMA = {
@@ -21,10 +20,9 @@ module Schemas
           properties: {
             name: { type: :string },
             description: { type: :string },
-            status: { type: :string, enum: %w[not_started in_progress completed] },
-            project_link: { type: :string }
+            status: { type: :string, enum: %w[not_started in_progress completed] }
           },
-          required: %w[name description status project_link]
+          required: %w[name description status]
         }
       },
       required: %w[task]
