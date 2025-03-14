@@ -4,53 +4,60 @@ class Api::V1::ProjectsController < Api::V1::BaseController
   load_and_authorize_resource
 
   def index
-    @projects = current_user.projects
+    service = Projects::Index.call(current_user)
+
     render json: {
       data: ActiveModelSerializers::SerializableResource.new(
-        @projects, each_serializer: ProjectSerializer
+        service.projects, each_serializer: ProjectSerializer
       )
     }
   end
 
   def show
+    service = Projects::Show.call(current_user, @project)
+
     render json: {
       data: ActiveModelSerializers::SerializableResource.new(
-        @project, serializer: ProjectSerializer
+        service.project, serializer: ProjectSerializer
       )
     }
   end
 
   def create
-    @project = current_user.projects.build(project_params)
+    service = Projects::Create.call(current_user, params)
 
-    if @project.save
+    if service.success?
       render json: {
         data: ActiveModelSerializers::SerializableResource.new(
-          @project, serializer: ProjectSerializer
+          service.project, serializer: ProjectSerializer
         )
       }, status: :created
     else
-      render json: { errors: @project.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: service.errors }, status: service.status_error
     end
   end
 
   def update
-    if @project.update(project_params)
+    service = Projects::Update.call(current_user, @project, params)
+
+    if service.success?
       render json: {
         data: ActiveModelSerializers::SerializableResource.new(
-          @project, serializer: ProjectSerializer
+          service.project, serializer: ProjectSerializer
         )
       }
     else
-      render json: { errors: @project.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: service.errors }, status: service.status_error
     end
   end
 
   def destroy
-    if @project.destroy
+    service = Projects::Delete.call(current_user, @project)
+
+    if service.success?
       head :no_content
     else
-      render json: { errors: @project.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: service.errors }, status: service.status_error
     end
   end
 

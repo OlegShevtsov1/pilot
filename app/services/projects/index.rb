@@ -8,7 +8,7 @@ module Projects
     end
 
     def call
-      @projects = @user.projects
+      @projects = @user.projects.includes(:user, :tasks)
 
       self
     end

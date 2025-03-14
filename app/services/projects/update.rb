@@ -1,17 +1,18 @@
 module Projects
   class Update < ApplicationService
-    attr_reader :user, :project_id, :params, :project, :errors
+    attr_reader :user, :project, :params, :errors
 
-    def initialize(user, project_id, params)
+    def initialize(user, project, params)
       @user = user
-      @project_id = project_id
+      @project = project
       @params = params
       @errors = []
     end
 
     def call
-      find_project
-      update_project if @project
+      update_project
+
+      @project = Project.includes(:user, :tasks).find(@project.id) if @project.persisted? && @errors.empty?
 
       self
     end
@@ -20,17 +21,11 @@ module Projects
       @errors.empty?
     end
 
-    def status
+    def status_error
       :unprocessable_entity
     end
 
     private
-
-    def find_project
-      @project = Project.find(project_id)
-    rescue ActiveRecord::RecordNotFound
-      raise ApiExceptions::ResourceNotFoundError.new('Project')
-    end
 
     def update_project
       unless @project.update(project_params)

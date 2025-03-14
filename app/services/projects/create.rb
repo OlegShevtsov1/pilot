@@ -11,7 +11,12 @@ module Projects
     def call
       @project = @user.projects.build(project_params)
 
-      @errors = @project.errors.full_messages unless @project.save
+      if @project.save
+
+        @project = Project.includes(:user, :tasks).find(@project.id)
+      else
+        @errors = @project.errors.full_messages
+      end
 
       self
     end
@@ -20,7 +25,7 @@ module Projects
       @errors.empty?
     end
 
-    def status
+    def status_error
       :unprocessable_entity
     end
 
