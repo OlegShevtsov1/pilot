@@ -1,15 +1,15 @@
 module Projects
   class Show < ApplicationService
-    attr_reader :user, :project_id, :project, :errors
+    attr_reader :user, :project, :errors
 
-    def initialize(user, project_id)
+    def initialize(user, project)
       @user = user
-      @project_id = project_id
+      @project = project
       @errors = []
     end
 
     def call
-      find_project
+      @project = Project.includes(:user, :tasks).find(@project.id) if @project.persisted?
 
       self
     end
@@ -20,15 +20,8 @@ module Projects
 
     def status
       return :not_found if @errors.include?('Project not found')
+
       :unprocessable_entity
-    end
-
-    private
-
-    def find_project
-      @project = Project.find(project_id)
-    rescue ActiveRecord::RecordNotFound
-      @errors << 'Project not found'
     end
   end
 end

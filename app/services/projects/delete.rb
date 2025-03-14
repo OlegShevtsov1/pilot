@@ -1,16 +1,15 @@
 module Projects
   class Delete < ApplicationService
-    attr_reader :user, :project_id, :project, :errors
+    attr_reader :user, :project, :errors
 
-    def initialize(user, project_id)
+    def initialize(user, project)
       @user = user
-      @project_id = project_id
+      @project = project
       @errors = []
     end
 
     def call
-      find_project
-      delete_project if @project
+      delete_project
 
       self
     end
@@ -19,18 +18,13 @@ module Projects
       @errors.empty?
     end
 
-    def status
+    def status_error
       return :not_found if @errors.include?('Project not found')
+
       :unprocessable_entity
     end
 
     private
-
-    def find_project
-      @project = Project.find(project_id)
-    rescue ActiveRecord::RecordNotFound
-      @errors << 'Project not found'
-    end
 
     def delete_project
       unless @project.destroy
