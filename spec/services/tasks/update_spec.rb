@@ -6,10 +6,10 @@ RSpec.describe Tasks::Update do
   end
   let(:valid_params) do
     ActionController::Parameters.new(
-      { task: { name: "Updated Task", description: "Updated description", status: "in_progress", project_link: "https://github.com/example/project" } })
+      { task: { name: "Updated Task", description: "Updated description", status: "in_progress" } })
   end
   let(:invalid_params) do
-    ActionController::Parameters.new({ task: { name: "", description: "", status: nil, project_link: "" } })
+    ActionController::Parameters.new({ task: { name: "", description: "", status: nil } })
   end
 
   describe '#call' do
