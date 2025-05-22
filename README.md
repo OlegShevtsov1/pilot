@@ -166,5 +166,5 @@ rm tmp/pids/server.pid
 Then start the server again.
 
 ```
-
+test-connect
 ```
