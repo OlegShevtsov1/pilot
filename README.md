@@ -4,15 +4,15 @@ A robust RESTful API backend for managing projects and tasks. This application a
 
 # Detailed task description
 
-**GitHub:** [https://github.com/OlegShevtsov1/pilot/blob/develop/TASK_DEFINITION.md](https://github.com/OlegShevtsov1/pilot/blob/develop/TASK_DEFINITION.md)
+**GitHub:** [https://github.com/olegshevtsov1/pilot/blob/develop/TASK_DEFINITION.md](https://github.com/olegshevtsov1/pilot/blob/develop/TASK_DEFINITION.md)
 
 ## Repository
 
-**GitHub:** [https://github.com/olehshev1/pilot](https://github.com/olehshev1/pilot)
+**GitHub:** [https://github.com/olegshevtsov1/pilot](https://github.com/olegshevtsov1/pilot)
 
 ## Project
 
-**GitHub:** [https://github.com/users/olehshev1/projects/11](https://github.com/users/olehshev1/projects/5)
+**GitHub:** [https://github.com/users/olegshevtsov1/projects/11](https://github.com/users/olegshevtsov1/projects/5)
 
 ## Features
 
@@ -36,7 +36,7 @@ A robust RESTful API backend for managing projects and tasks. This application a
 1. Clone the repository
 
    ```
-   git clone git@github.com:olehshev1/pilot.git
+   git clone git@github.com:olegshevtsov1/pilot.git
    cd pilot
    ```
 
